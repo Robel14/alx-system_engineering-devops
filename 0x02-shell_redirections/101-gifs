@@ -1,10 +1,2 @@
 #!/bin/bash
-shopt -s globstar nullglob nocaseglob
-for file in **/*.gif; do
-    if [[ -f "$file" ]]; then
-        file_name=$(echo "$file" | sed 's/\.gif$//')
-        echo "$file_name"
-    fi
-done | sort
-
-echo
+find -type f -name "*.git" | rev | cut -d "/" -f 1 | cut -d '.' 2- | rev | LC_ALL=C sort -f
