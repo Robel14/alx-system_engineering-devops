@@ -1,2 +1,6 @@
 #!/bin/bash
-find -type f -name "*.git" | rev | cut -d "/" -f 1 | cut -d '.' 2- | rev | LC_ALL=C sort -f
+
+find . -type f -name ".gif" | while read -r file
+do
+  [ -f "$file" ] && echo "${file%.}"
+done | sort -f | awk '!seen$0++' && echo
